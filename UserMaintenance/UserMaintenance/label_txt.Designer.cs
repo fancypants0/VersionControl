@@ -61,24 +61,6 @@ namespace UserMaintenance {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keresztnév.
-        /// </summary>
-        internal static string first {
-            get {
-                return ResourceManager.GetString("first", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vezetéknév.
-        /// </summary>
-        internal static string last {
-            get {
-                return ResourceManager.GetString("last", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Mentés.
         /// </summary>
         internal static string save {

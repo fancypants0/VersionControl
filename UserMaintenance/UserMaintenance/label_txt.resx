@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="first" xml:space="preserve">
-    <value>Keresztnév</value>
-  </data>
-  <data name="last" xml:space="preserve">
-    <value>Vezetéknév</value>
-  </data>
   <data name="save" xml:space="preserve">
     <value>Mentés</value>
   </data>

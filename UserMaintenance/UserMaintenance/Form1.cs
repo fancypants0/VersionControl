@@ -13,8 +13,6 @@ namespace UserMaintenance
         {
             InitializeComponent();
 
-            l_fist.Text = label_txt.first;
-            l_last.Text = label_txt.last;
             b_save.Text = label_txt.save;
 
             listBox1.DataSource = users;
@@ -25,8 +23,7 @@ namespace UserMaintenance
         private void b_save_Click(object sender, EventArgs e)
         {
             user u = new user();
-            u.first_name = tb_first.Text;
-            u.last_name = tb_last.Text;
+            u.full_name = tb_first.Text + " " + tb_last.Text;
             users.Add(u);
         }
     }
