@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
+using System.Drawing;
 
 namespace gyak4_jlv3dc
 {
@@ -14,12 +15,13 @@ namespace gyak4_jlv3dc
 
         Excel.Application xlApp;
         Excel.Workbook xlWB;
-        Excel.Sheets xlSheet;
+        Excel.Worksheet xlSheet;
 
         public Form1()
         {
             InitializeComponent();
             load_data();
+            create_excel();
         }
 
         void load_data()
@@ -75,6 +77,7 @@ namespace gyak4_jlv3dc
                 values[j, 8] = "=" + what_cell(7, j) + "/" + what_cell(8, j);
 
                 xlSheet.get_Range(what_cell(2, 1), what_cell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
+                formatting(headers.Length);
             }
         }
 
@@ -92,6 +95,18 @@ namespace gyak4_jlv3dc
             }
             coordinate += x.ToString();
             return coordinate;
+        }
+
+        void formatting(int l)
+        {
+            Excel.Range head = xlSheet.get_Range(what_cell(1, 1), what_cell(1, l));
+            head.Font.Bold = true;
+            head.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            head.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            head.EntireColumn.AutoFit();
+            head.RowHeight = 40;
+            head.Interior.Color = Color.LightBlue;
+            head.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
         }
     }
 }
