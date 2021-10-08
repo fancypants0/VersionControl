@@ -12,9 +12,18 @@ namespace gyak4_jlv3dc
 {
     public partial class Form1 : Form
     {
+        RealEstateEntities context = new RealEstateEntities();
+        List<Flat> flats;
+
         public Form1()
         {
             InitializeComponent();
+            load_data();
+        }
+
+        void load_data()
+        {
+            flats = context.Flats.ToList();
         }
     }
 }
