@@ -12,6 +12,10 @@ namespace gyak4_jlv3dc
         RealEstateEntities context = new RealEstateEntities();
         List<Flat> flats;
 
+        Excel.Application xlApp;
+        Excel.Workbook xlWB;
+        Excel.Sheets xlSheet;
+
         public Form1()
         {
             InitializeComponent();
@@ -21,6 +25,31 @@ namespace gyak4_jlv3dc
         void load_data()
         {
             flats = context.Flats.ToList();
+        }
+
+        void create_excel()
+        {
+            try
+            {
+                xlApp = new Excel.Application();
+                xlWB = xlApp.Workbooks.Add(Missing.Value);
+                xlSheet = xlWB.ActiveSheet;
+
+                //create_table();
+
+                xlApp.Visible = true;
+                xlApp.UserControl = true;
+            }
+            catch (Exception ex)
+            {
+                string msg = string.Format("Error: {0}\nLine: {1}", ex.Message, ex.Source);
+                MessageBox.Show(msg, "Error");
+
+                xlWB.Close(false, Type.Missing, Type.Missing);
+                xlApp.Quit();
+                xlWB = null;
+                xlApp = null;
+            }
         }
     }
 }
