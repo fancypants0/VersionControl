@@ -53,19 +53,19 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="label_txt.Designer.cs">
+    <Compile Include="txt.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>label_txt.resx</DependentUpon>
+      <DependentUpon>txt.resx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="label_txt.resx">
+    <EmbeddedResource Include="txt.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>label_txt.Designer.cs</LastGenOutput>
+      <LastGenOutput>txt.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

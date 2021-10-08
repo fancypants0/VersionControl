@@ -34,6 +34,7 @@
             this.tb_first = new System.Windows.Forms.TextBox();
             this.tb_last = new System.Windows.Forms.TextBox();
             this.b_save = new System.Windows.Forms.Button();
+            this.b_write = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -101,17 +102,32 @@
             this.b_save.UseVisualStyleBackColor = true;
             this.b_save.Click += new System.EventHandler(this.b_save_Click);
             // 
+            // b_write
+            // 
+            this.b_write.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.b_write.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.b_write.Location = new System.Drawing.Point(348, 373);
+            this.b_write.Name = "b_write";
+            this.b_write.Size = new System.Drawing.Size(315, 43);
+            this.b_write.TabIndex = 6;
+            this.b_write.Text = "button1";
+            this.b_write.UseVisualStyleBackColor = true;
+            this.b_write.Click += new System.EventHandler(this.b_write_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 430);
+            this.Controls.Add(this.b_write);
             this.Controls.Add(this.b_save);
             this.Controls.Add(this.tb_last);
             this.Controls.Add(this.tb_first);
             this.Controls.Add(this.l_last);
             this.Controls.Add(this.l_fist);
             this.Controls.Add(this.listBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "user";
             this.ResumeLayout(false);
@@ -127,6 +143,7 @@
         private System.Windows.Forms.TextBox tb_first;
         private System.Windows.Forms.TextBox tb_last;
         private System.Windows.Forms.Button b_save;
+        private System.Windows.Forms.Button b_write;
     }
 }
 

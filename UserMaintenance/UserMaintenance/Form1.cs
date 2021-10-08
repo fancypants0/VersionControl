@@ -13,7 +13,8 @@ namespace UserMaintenance
         {
             InitializeComponent();
 
-            b_save.Text = label_txt.save;
+            b_save.Text = txt.save;
+            b_write.Text = txt.write_to_file;
 
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
@@ -25,6 +26,11 @@ namespace UserMaintenance
             user u = new user();
             u.full_name = tb_first.Text + " " + tb_last.Text;
             users.Add(u);
+        }
+
+        private void b_write_Click(object sender, EventArgs e)
+        {
+            //what
         }
     }
 }

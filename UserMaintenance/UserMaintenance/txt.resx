@@ -120,4 +120,7 @@
   <data name="save" xml:space="preserve">
     <value>Mentés</value>
   </data>
+  <data name="write_to_file" xml:space="preserve">
+    <value>Fájlba Írás</value>
+  </data>
 </root>
