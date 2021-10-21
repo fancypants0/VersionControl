@@ -37,5 +37,17 @@ namespace gyak06_jlv3dc
 
             dataGridView2.DataSource = portfolio;
         }
+
+        private decimal gat_value(DateTime date)
+        {
+            decimal d = 0;
+            foreach (var n in portfolio)
+            {
+                var last = (from x in ticks where n.index == x.Index.Trim() && date <= x.TradingDay select x).First();
+
+                d += last.Price * n.volume;
+            }
+            return d;
+        }
     }
 }
