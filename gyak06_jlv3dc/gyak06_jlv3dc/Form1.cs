@@ -27,6 +27,7 @@ namespace gyak06_jlv3dc
             dataGridView1.DataSource = ticks;
 
             create();
+            komplex();
         }
 
         void create()
@@ -38,7 +39,7 @@ namespace gyak06_jlv3dc
             dataGridView2.DataSource = portfolio;
         }
 
-        private decimal gat_value(DateTime date)
+        private decimal get_value(DateTime date)
         {
             decimal d = 0;
             foreach (var n in portfolio)
@@ -48,6 +49,28 @@ namespace gyak06_jlv3dc
                 d += last.Price * n.volume;
             }
             return d;
+        }
+
+        void komplex()
+        {
+            List<decimal> Nyereségek = new List<decimal>();
+            int intervalum = 30;
+            DateTime kezdőDátum = (from x in ticks select x.TradingDay).Min();
+            DateTime záróDátum = new DateTime(2016, 12, 30);
+            TimeSpan z = záróDátum - kezdőDátum;
+            for (int i = 0; i < z.Days - intervalum; i++)
+            {
+                decimal ny = get_value(kezdőDátum.AddDays(i + intervalum))
+                           - get_value(kezdőDátum.AddDays(i));
+                Nyereségek.Add(ny);
+                Console.WriteLine(i + " " + ny);
+            }
+
+            var nyereségekRendezve = (from x in Nyereségek
+                                      orderby x
+                                      select x)
+                                        .ToList();
+            MessageBox.Show(nyereségekRendezve[nyereségekRendezve.Count() / 5].ToString());
         }
     }
 }
