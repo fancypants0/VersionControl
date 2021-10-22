@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace gyak06_jlv3dc
 {
     public partial class Form1 : Form
     {
+        List<decimal> earnings = new List<decimal>();
         List<item> portfolio = new List<item>();
         List<Tick> ticks;
 
@@ -27,7 +29,7 @@ namespace gyak06_jlv3dc
             dataGridView1.DataSource = ticks;
 
             create();
-            komplex();
+            //komplex();
         }
 
         void create()
@@ -53,24 +55,36 @@ namespace gyak06_jlv3dc
 
         void komplex()
         {
-            List<decimal> Nyereségek = new List<decimal>();
-            int intervalum = 30;
-            DateTime kezdőDátum = (from x in ticks select x.TradingDay).Min();
-            DateTime záróDátum = new DateTime(2016, 12, 30);
-            TimeSpan z = záróDátum - kezdőDátum;
-            for (int i = 0; i < z.Days - intervalum; i++)
-            {
-                decimal ny = get_value(kezdőDátum.AddDays(i + intervalum))
-                           - get_value(kezdőDátum.AddDays(i));
-                Nyereségek.Add(ny);
-                Console.WriteLine(i + " " + ny);
-            }
+            DateTime begin = (from x in ticks select x.TradingDay).Min();
+            DateTime end = new DateTime(2016, 12, 30);
 
-            var nyereségekRendezve = (from x in Nyereségek
-                                      orderby x
-                                      select x)
-                                        .ToList();
-            MessageBox.Show(nyereségekRendezve[nyereségekRendezve.Count() / 5].ToString());
+            for (int i = 0; i < (end - begin).Days - 30; i++)
+            {
+                decimal ny = get_value(begin.AddDays(i + 30)) - get_value(begin.AddDays(i));
+                earnings.Add(ny);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            komplex();
+
+            earnings = (from x in earnings orderby x select x).ToList();
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter ="Text File | *.txt";
+            sfd.FileName = "Kimutatás1";
+            if (sfd.ShowDialog()==DialogResult.OK)
+            {
+                StreamWriter sw = new StreamWriter(sfd.FileName);
+                sw.WriteLine("Időszak,Nyereség");
+                for (int i = 0; i < earnings.Count; i++)
+                {
+                    sw.WriteLine((i + 1).ToString() + "," + earnings[i].ToString());
+                }
+                sw.Close();
+                MessageBox.Show("Nyereség elmentve!");
+            }
         }
     }
 }
