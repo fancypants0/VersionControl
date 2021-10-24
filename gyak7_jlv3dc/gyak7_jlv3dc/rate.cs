@@ -6,6 +6,6 @@ namespace gyak7_jlv3dc
     {
         public DateTime date { get; set; }
         public string currency { get; set; }
-        public int value { get; set; }
+        public decimal value { get; set; }
     }
 }
