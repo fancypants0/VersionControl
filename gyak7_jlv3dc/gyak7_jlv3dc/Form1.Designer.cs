@@ -28,60 +28,166 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.dgw_data = new System.Windows.Forms.DataGridView();
+            this.c_data = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.dtp_start = new System.Windows.Forms.DateTimePicker();
+            this.dtp_finish = new System.Windows.Forms.DateTimePicker();
+            this.cb_curr = new System.Windows.Forms.ComboBox();
+            this.b_refresh = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgw_data)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c_data)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgw_data
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.ColumnHeadersVisible = false;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 544);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(810, 305);
-            this.dataGridView1.TabIndex = 0;
+            this.dgw_data.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgw_data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgw_data.ColumnHeadersVisible = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgw_data.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgw_data.Location = new System.Drawing.Point(429, 13);
+            this.dgw_data.Name = "dgw_data";
+            this.dgw_data.RowHeadersVisible = false;
+            this.dgw_data.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgw_data.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgw_data.Size = new System.Drawing.Size(397, 284);
+            this.dgw_data.TabIndex = 0;
             // 
-            // chart1
+            // c_data
             // 
+            this.c_data.BackColor = System.Drawing.SystemColors.Window;
             chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            this.c_data.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(12, 12);
-            this.chart1.Name = "chart1";
+            this.c_data.Legends.Add(legend2);
+            this.c_data.Location = new System.Drawing.Point(18, 346);
+            this.c_data.Name = "c_data";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(810, 526);
-            this.chart1.TabIndex = 1;
-            this.chart1.Text = "chart1";
+            this.c_data.Series.Add(series2);
+            this.c_data.Size = new System.Drawing.Size(810, 403);
+            this.c_data.TabIndex = 1;
+            this.c_data.Text = "nem kell text";
+            // 
+            // dtp_start
+            // 
+            this.dtp_start.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dtp_start.Location = new System.Drawing.Point(18, 41);
+            this.dtp_start.Name = "dtp_start";
+            this.dtp_start.Size = new System.Drawing.Size(405, 31);
+            this.dtp_start.TabIndex = 2;
+            // 
+            // dtp_finish
+            // 
+            this.dtp_finish.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dtp_finish.Location = new System.Drawing.Point(18, 103);
+            this.dtp_finish.Name = "dtp_finish";
+            this.dtp_finish.Size = new System.Drawing.Size(405, 31);
+            this.dtp_finish.TabIndex = 3;
+            // 
+            // cb_curr
+            // 
+            this.cb_curr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cb_curr.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cb_curr.FormattingEnabled = true;
+            this.cb_curr.Location = new System.Drawing.Point(18, 165);
+            this.cb_curr.Name = "cb_curr";
+            this.cb_curr.Size = new System.Drawing.Size(405, 33);
+            this.cb_curr.TabIndex = 4;
+            this.cb_curr.Text = "EUR";
+            // 
+            // b_refresh
+            // 
+            this.b_refresh.BackColor = System.Drawing.SystemColors.Window;
+            this.b_refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.b_refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.b_refresh.Location = new System.Drawing.Point(18, 237);
+            this.b_refresh.Name = "b_refresh";
+            this.b_refresh.Size = new System.Drawing.Size(404, 60);
+            this.b_refresh.TabIndex = 5;
+            this.b_refresh.Text = "Refresh";
+            this.b_refresh.UseVisualStyleBackColor = false;
+            this.b_refresh.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 25);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "From";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(12, 75);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 25);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "To";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(12, 137);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 25);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Currency";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 861);
-            this.Controls.Add(this.chart1);
-            this.Controls.Add(this.dataGridView1);
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.ClientSize = new System.Drawing.Size(838, 761);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.b_refresh);
+            this.Controls.Add(this.cb_curr);
+            this.Controls.Add(this.dtp_finish);
+            this.Controls.Add(this.dtp_start);
+            this.Controls.Add(this.c_data);
+            this.Controls.Add(this.dgw_data);
             this.Name = "Form1";
             this.Text = "MNB";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgw_data)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c_data)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataGridView dgw_data;
+        private System.Windows.Forms.DataVisualization.Charting.Chart c_data;
+        private System.Windows.Forms.DateTimePicker dtp_start;
+        private System.Windows.Forms.DateTimePicker dtp_finish;
+        private System.Windows.Forms.ComboBox cb_curr;
+        private System.Windows.Forms.Button b_refresh;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

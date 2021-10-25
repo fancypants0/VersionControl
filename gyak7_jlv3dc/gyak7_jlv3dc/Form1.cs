@@ -27,9 +27,15 @@ namespace gyak7_jlv3dc
         public Form1()
         {
             InitializeComponent();
+            //refresh();
+        }
 
-            dataGridView1.DataSource = rates;
-            chart1.DataSource = rates;
+        void refresh()
+        {
+            rates.Clear();
+
+            dgw_data.DataSource = rates;
+            c_data.DataSource = rates;
 
             get_rates();
             egy_a_form1_konstruktorabol_meghivott_kulon_fuggveny();
@@ -37,9 +43,9 @@ namespace gyak7_jlv3dc
 
         void get_rates()
         {
-            request.currencyNames = "EUR";
-            request.startDate = "2020-01-01";
-            request.endDate = "2020-06-30";
+            request.currencyNames = cb_curr.Text;
+            request.startDate = dtp_start.Value.ToString("yyyy-MM-dd");
+            request.endDate = dtp_finish.Value.ToString("yyyy-MM-dd");
 
             response = mnb_service.GetExchangeRates(request);
             result = response.GetExchangeRatesResult;
@@ -66,18 +72,23 @@ namespace gyak7_jlv3dc
 
             //chart1.SeriesChartType = SeriesChartType.Line;
 
-            Series s = chart1.Series[0];
+            Series s = c_data.Series[0];
             s.ChartType = SeriesChartType.Line;
             s.XValueMember = "Date";
             s.YValueMembers = "Value";
             s.BorderWidth = 2;
 
-            chart1.Legends[0].Enabled = false;
+            c_data.Legends[0].Enabled = false;
 
-            ChartArea a = chart1.ChartAreas[0];
+            ChartArea a = c_data.ChartAreas[0];
             a.AxisX.MajorGrid.Enabled = false;
             a.AxisY.MajorGrid.Enabled = false;
             a.AxisY.IsStartedFromZero = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            refresh();
         }
     }
 }
