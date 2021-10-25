@@ -28,11 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dgw_data = new System.Windows.Forms.DataGridView();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currencyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rateBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.c_data = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dtp_start = new System.Windows.Forms.DateTimePicker();
             this.dtp_finish = new System.Windows.Forms.DateTimePicker();
@@ -42,14 +48,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_data)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rateBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c_data)).BeginInit();
             this.SuspendLayout();
             // 
             // dgw_data
             // 
+            this.dgw_data.AutoGenerateColumns = false;
             this.dgw_data.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgw_data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgw_data.ColumnHeadersVisible = false;
+            this.dgw_data.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dateDataGridViewTextBoxColumn,
+            this.currencyDataGridViewTextBoxColumn,
+            this.valueDataGridViewTextBoxColumn});
+            this.dgw_data.DataSource = this.rateBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -66,19 +78,49 @@
             this.dgw_data.Size = new System.Drawing.Size(397, 284);
             this.dgw_data.TabIndex = 0;
             // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "date";
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = "?";
+            this.dateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dateDataGridViewTextBoxColumn.HeaderText = "date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.Width = 26;
+            // 
+            // currencyDataGridViewTextBoxColumn
+            // 
+            this.currencyDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.currencyDataGridViewTextBoxColumn.DataPropertyName = "currency";
+            this.currencyDataGridViewTextBoxColumn.HeaderText = "currency";
+            this.currencyDataGridViewTextBoxColumn.Name = "currencyDataGridViewTextBoxColumn";
+            this.currencyDataGridViewTextBoxColumn.Width = 73;
+            // 
+            // valueDataGridViewTextBoxColumn
+            // 
+            this.valueDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.valueDataGridViewTextBoxColumn.DataPropertyName = "value";
+            this.valueDataGridViewTextBoxColumn.HeaderText = "value";
+            this.valueDataGridViewTextBoxColumn.Name = "valueDataGridViewTextBoxColumn";
+            // 
+            // rateBindingSource
+            // 
+            this.rateBindingSource.DataSource = typeof(gyak7_jlv3dc.rate);
+            // 
             // c_data
             // 
             this.c_data.BackColor = System.Drawing.SystemColors.Window;
-            chartArea2.Name = "ChartArea1";
-            this.c_data.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.c_data.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.c_data.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.c_data.Legends.Add(legend1);
             this.c_data.Location = new System.Drawing.Point(18, 346);
             this.c_data.Name = "c_data";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.c_data.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.c_data.Series.Add(series1);
             this.c_data.Size = new System.Drawing.Size(810, 403);
             this.c_data.TabIndex = 1;
             this.c_data.Text = "nem kell text";
@@ -108,7 +150,6 @@
             this.cb_curr.Name = "cb_curr";
             this.cb_curr.Size = new System.Drawing.Size(405, 33);
             this.cb_curr.TabIndex = 4;
-            this.cb_curr.Text = "EUR";
             // 
             // b_refresh
             // 
@@ -171,6 +212,7 @@
             this.Name = "Form1";
             this.Text = "MNB";
             ((System.ComponentModel.ISupportInitialize)(this.dgw_data)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rateBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c_data)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -188,6 +230,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.BindingSource rateBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currencyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valueDataGridViewTextBoxColumn;
     }
 }
 

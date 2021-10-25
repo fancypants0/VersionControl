@@ -119,6 +119,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\mnb\MNBArfolyamServiceSoapImpl.wsdl" />
+    <None Include="Properties\DataSources\rate.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

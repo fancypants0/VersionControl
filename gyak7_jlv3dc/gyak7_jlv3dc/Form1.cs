@@ -23,10 +23,12 @@ namespace gyak7_jlv3dc
         string result;
 
         BindingList<rate> rates = new BindingList<rate>();
+        BindingList<string> currs = new BindingList<string>();
 
         public Form1()
         {
             InitializeComponent();
+            get_curr();
             //refresh();
         }
 
@@ -51,6 +53,28 @@ namespace gyak7_jlv3dc
             result = response.GetExchangeRatesResult;
         }
 
+        void get_curr()
+        {
+            /*EZ A RÉSZ VALAMIÉRT NEM MŰKÖDIK
+
+            var cur_req = new GetCurrenciesRequestBody();
+            var cur_res = mnb_service.GetCurrencies(cur_req);
+            var asd = cur_res.GetCurrenciesResult;
+
+            var xd = new XmlDocument();
+            xd.LoadXml(asd);
+
+            foreach (XmlElement n in xd.DocumentElement)
+            {
+                XmlElement child = (XmlElement)n.ChildNodes[0];
+                if (child != null) currs.Add(child.GetAttribute("curr"));
+            }
+
+            cb_curr.DataSource = currs;*/
+
+            cb_curr.Text = "EUR";
+        }
+
         void egy_a_form1_konstruktorabol_meghivott_kulon_fuggveny()
         {
             XmlDocument xd = new XmlDocument();
@@ -63,11 +87,12 @@ namespace gyak7_jlv3dc
                 rates.Add(r);
 
                 XmlElement child = (XmlElement)n.ChildNodes[0];
+                if (child == null) continue;
                 r.currency = child.GetAttribute("curr");
 
                 decimal unit = decimal.Parse(child.GetAttribute("unit"));
                 decimal value = decimal.Parse(child.InnerText);
-                if (unit != 0) r.value = value / unit;
+                if (unit != 0) r.value = (value / unit) / 100;
             }
 
             //chart1.SeriesChartType = SeriesChartType.Line;
