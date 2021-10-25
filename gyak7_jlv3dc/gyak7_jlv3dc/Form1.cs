@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 
 namespace gyak7_jlv3dc
@@ -26,9 +27,11 @@ namespace gyak7_jlv3dc
         public Form1()
         {
             InitializeComponent();
-            dataGridView1.DataSource = rates;
-            get_rates();
 
+            dataGridView1.DataSource = rates;
+            chart1.DataSource = rates;
+
+            get_rates();
             egy_a_form1_konstruktorabol_meghivott_kulon_fuggveny();
         }
 
@@ -56,11 +59,25 @@ namespace gyak7_jlv3dc
                 XmlElement child = (XmlElement)n.ChildNodes[0];
                 r.currency = child.GetAttribute("curr");
 
-                // Érték
-                var unit = decimal.Parse(child.GetAttribute("unit"));
-                var value = decimal.Parse(child.InnerText);
+                decimal unit = decimal.Parse(child.GetAttribute("unit"));
+                decimal value = decimal.Parse(child.InnerText);
                 if (unit != 0) r.value = value / unit;
             }
+
+            //chart1.SeriesChartType = SeriesChartType.Line;
+
+            Series s = chart1.Series[0];
+            s.ChartType = SeriesChartType.Line;
+            s.XValueMember = "Date";
+            s.YValueMembers = "Value";
+            s.BorderWidth = 2;
+
+            chart1.Legends[0].Enabled = false;
+
+            ChartArea a = chart1.ChartAreas[0];
+            a.AxisX.MajorGrid.Enabled = false;
+            a.AxisY.MajorGrid.Enabled = false;
+            a.AxisY.IsStartedFromZero = false;
         }
     }
 }
