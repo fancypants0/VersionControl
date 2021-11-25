@@ -2,6 +2,7 @@
 using System.Activities;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -50,7 +51,7 @@ namespace UnitTestExample.Controllers
 
         public bool ValidatePassword(string password)
         {
-            return true;
+            return Regex.IsMatch(password, "[0-9]") && Regex.IsMatch(password, "[A-Z]") && Regex.IsMatch(password, "[a-z]") && password.Length >= 6;
         }
     }
 }
