@@ -7,14 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using jlv3dc_gyak11.libs;
 
 namespace jlv3dc_gyak11
 {
+    GameController gc = new GameController();
+    GameArea ga;
+
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
+            ga = gc.ActivateDisplay();
+            this.Controls.Add(ga);
         }
     }
 }
